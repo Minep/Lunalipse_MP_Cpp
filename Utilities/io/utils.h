@@ -1,10 +1,10 @@
-#ifndef __LPS_UTILS
-#define __LPS_UTILS
+#ifndef __LPS_UTILS_IO_FILE
+#define __LPS_UTILS_IO_FILE
 #include <iostream>
 #include <vector>
-
-std::vector<std::string> split(const std::string& str, const std::string& delim);
+#include <fstream>
 char* getFileName(const char* path);
 char* getFileNameWithoutExt(const char* filename);
 char* getFileExt(const char* filename);
+long getFileSize(const char* path);
 #endif

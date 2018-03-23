@@ -1,22 +1,7 @@
-#include "utils_templet.h"
+#include "../utils_templet.h"
+#include "../string/utils_str.h"
 #include "utils.h"
 using namespace std;
-std::vector<std::string> split(const std::string& str, const std::string& delim)
-{
-    vector<string> res;  
-    if("" == str) return res;  
-    char * strs = new char[str.length() + 1] ;
-    strcpy(strs, str.c_str());    
-    char * d = new char[delim.length() + 1];  
-    strcpy(d, delim.c_str());   
-    char *p = strtok(strs, d);  
-    while(p) {  
-        string s = p; //分割得到的字符串转换为string类型  
-        res.push_back(s); //存入结果数组  
-        p = strtok(NULL, d);  
-    }
-    return res;
-}
 
 char* getFileName(const char* path){
     vector<string> name = split(path,"\\");
@@ -40,5 +25,15 @@ char* getFileName(const char* filename){
     strcpy(c,name[0].c_str());
     dVector(name);
     return c;
+}
+
+long getFileSize(const char* path){
+    ifstream file;
+    file.open(path);
+    if(!file) return -1;
+    file.seekg(0,ios::end);
+    long size = file.tellg();
+    file.close();
+    return size;
 }
 

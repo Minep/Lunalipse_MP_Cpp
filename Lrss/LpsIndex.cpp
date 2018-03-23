@@ -1,5 +1,5 @@
 #include "includes/lps_resources_index.h"
-#include "../Utilities/utils.h"
+#include "../Utilities/io/utils.h"
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -10,4 +10,5 @@ LrssIndex::LrssIndex(char* path){
     char* name_ne = getFileNameWithoutExt(name);
     strcpy(__HEADER.F_NAME,name_ne);
     strcpy(__HEADER.F_TYPE,ext);
+    __HEADER.FH_SIZE = getFileSize(path);
 }
